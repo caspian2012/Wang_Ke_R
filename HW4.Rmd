@@ -5,7 +5,7 @@ output: html_document
 
 ## Question 1
 # a
-```{r}
+```{r, include=TRUE}
 # Create a vector (1,2,3,...,19,20)
 (1:20)
 ```
