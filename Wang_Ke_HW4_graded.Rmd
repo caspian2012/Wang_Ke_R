@@ -1,0 +1,193 @@
+---
+title: "HW4"
+output: html_document
+---
+
+## Question 1
+# a
+```{r, include=TRUE}
+# Create a vector (1,2,3,...,19,20)
+(1:20)
+```
+
+# b
+```{r}
+# Create a vector (20,10,...,2,1)
+(20:1)
+```
+
+# c
+```{r}
+# Create a vector (1,2,3...,19,20,19,18,...,2,1)
+c(1:20,19:1)
+```
+
+# d
+```{r}
+# Create a vector (4,6,3) and name it tmp.
+tmp <- c(4,6,3)
+```
+
+# e
+```{r}
+# Create a vector (4,6,3, 4,6,3,...,4,6,3) where there are 10 occurrences of 4.
+# Replicate the tmp vector 10 times to get the desired vector.
+rep(tmp, 10)
+```
+
+# f
+```{r}
+# Create a vector (4,6,3, 4,6,3,...,4,6,3,4) where there are 11 occurrences of 4, 10 occurrences of 6 and 10 occurrences of 3.
+# Replicate the tmp vector and take the first 31 elements to form the desired vector.
+rep(tmp, len = 31)
+```
+
+# g
+```{r}
+# Create a vector (4,4,...,4, 6,6,...,6, 3,3,...,3) where there are 10 occurrences of 4, 20 occurrences of 6 and 30 occurrences of 3. 
+# the "c(10,20,30)" code make sure the first element in tmp repeated 10 times, followed by the second element in tmp repeated 20 times, and then followed by the third element in tmp repeated 30 times.
+rep(tmp, c(10,20,30))
+```
+
+## Question 2
+```{r}
+# Create a vector of the values of (e^x)cos(x) at x = 3,3.1,3.2,...,5.9,6.
+x <- seq(3,6, by = 0.1) # Create sequence x that x = 3,3.1,3.2,...,5.9,6.
+exp(x)*cos(x) # Create the vector of the values of (e^x)cos(x) for each x.
+```
+
+## Question 3
+# a
+```{r}
+# Create a vector (0.1^3*0.2^1,	0.1^6*0.2^4, 0.1^9*0.2^7,...,	0.1^36*0.2^34).
+0.1^seq(3,36, by = 3)*0.2^seq(1,34, by = 3)
+```
+
+# b
+```{r}
+# Create a vector (2, 2^2/2, 2^3/3, 2^4/4,..., 2^25/25)
+x <- (1:25) # Create a vector x that x = 1,2,3,...,25
+2^x/x # Create a vector of the values of 2^x/x for each x.
+```
+
+## Question 4
+# a
+```{r}
+# Taking the sum of (i^3 + 4*i^2) for i from 10 to 100 by 1.
+i <- (10:100) # Create vector i for i = 10,11,...,100.
+sum(i^3+4*i^2) # Take the sum of (i^3 + 4*i^2) for each i.
+```
+
+# b
+```{r}
+# Taking the sum of (2^i/i + 3^i/i^2) for i from 1 to 25 by 1.
+i <- (1:25) # Create vector i for i = 1,2,...,25.
+sum(2^i/i+3^i/i^2) # Take the sum of (2^i/i + 3^i/i^2) for each i.
+```
+
+## Question 5
+# a
+```{r}
+# Create a vector ("label 1", "label 2",..., "label 30"). Note that there is a single space between label and the number following.
+paste("label", 1:30, sep = " ")
+```
+
+# b
+```{r}
+# Create a vector ("fn1", "fn2",...,"fn30"). There is no space between fn and the number following.
+paste0("fn", 1:30)
+```
+
+## Question 6
+```{r}
+# Execute the following lines which create two vectors of random integers which are chosen with replacement from the integers 0, 1,..., 999. Both vectors have length 250.
+set.seed(50) # Use of set.seed() to reproduce the ramdom process
+xVec <- sample(0:999, 250, replace=T) # Take random sample with replacement so that each number can occur more than once.
+yVec <- sample(0:999, 250, replace=T)
+# Suppose x = (x1,x2,...,xn) denotes the vector xVec and y = (y1,y2,...,yn) denotes the vector yVec.
+x <- xVec
+y <- yVec
+```
+
+# a
+```{r}
+# Create a vector (y2-x1, y3-x2,...y[n]-x[n-1]).
+i <- (1:249) # Create the vector of i, i = 1,2,...249
+y[i+1] - x[i] # Create the desired vector for each value of i.
+```
+
+# b
+```{r}
+# Create a vector (sin(1)/cos(2), sin(2)/cos(3),..., sin(y[n-1]/cos(x[n])
+j <- (1:249) # Create the vector of j, j = 1,2,...249
+sin(y[j]) / cos(x[j+1]) # Create the desired vector for each value of j.
+```
+
+# c
+```{r}
+# Create a vector (x1+2*x2-x3,..., x[n-2]+2*x[n-1]-x[n])
+k <- (1:248) # Create the vector of k, k = 1,2,...249
+x[k] + 2*x[k+1] - x[k+2] # Create the desired vector for each value of k.
+```
+
+# d
+```{r}
+# Taking the sum of (e^(-x[i + 1])/(x[i] + 10)) for i from 1 to 249.
+l <- (1:249) # Create the vector of l, l = 1,2,...249
+sum(exp(-x[l+1])/(x[l]+10)) # Take the sum for the values of (e^(-x[l + 1])/(x[l] + 10)) for each value of l.
+```
+
+## Question 7
+# a
+```{r}
+# Pick out the values in yVec which are greater than 600.
+yVec[yVec > 600]
+```
+
+# b
+```{r}
+# Return the index positions in yVec of the values which are greater than 600.
+(1:length(yVec))[yVec > 600]
+```
+
+# c
+```{r}
+# Return the values in xVec which correspond to the values in yVec which are greater than	600?	(By correspond, we mean at the same index positions.)
+xVec[yVec>600]
+```
+
+# d
+```{r}
+# Create a vector (|x1-mean(x)|^(1/2), |x2-mean(x)|^(1/2),..., |xn-mean(x)|^(1/2)) where mean(x) denotes the mean of the vector x = (x1,x2,...,xn).
+sqrt(abs(xVec - mean(xVec)))
+```
+
+# e
+```{r}
+# Find the how many values in yVec that are within 200 of the maximum value of the terms in yVec?
+sum(yVec > max(yVec) - 200) # Since true values are regarded as one and false values as zero, we simply take the sum of the values.
+```
+
+# f
+```{r}
+# Find how many numbers in xVec are divisible by 2? (Note that the mod operator is denoted %%.)
+sum(xVec %% 2 == 0) # Since true values are regarded as one and false values as zero, we simply take the sum of the values.
+```
+
+# g
+```{r}
+# Sort the numbers in the vector xVec in the order of increasing values in yVec.
+xVec[order(yVec)] # The sort order increasing by default.
+```
+
+# h 
+```{r}
+# Pick out the elements in yVec at index positions 1,4,7,10,13,...
+yVec[c(T, F, F)] # Pick the first, skip the second and the third, and repeat for every 3 elements.
+```
+
+## Question 8
+```{r}
+# By using the function cumprod calculate 1 + 2/3 + 2*4/3*5 + 2*4*6/3*5*7 + ... + 2*4*...38/3*5*...39.
+1 + sum(cumprod(seq(2, 38, by = 2))/cumprod(seq(3, 39, by = 2))) # the numerator for each term is a sequence of even numbers from 2 to 38; the denominator for each term is a sequence of odd numbers from 3 to 39.
+```
